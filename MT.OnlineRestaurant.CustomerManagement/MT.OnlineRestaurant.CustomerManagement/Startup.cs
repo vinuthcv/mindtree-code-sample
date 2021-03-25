@@ -71,7 +71,7 @@ namespace MT.OnlineRestaurant.CustomerManagement
                 c.OperationFilter<HeaderFilter>();
             });
             services.AddDbContext<CustomerManagementContext>(options =>
-               options.UseSqlServer("Server=tcp:devserver4.database.windows.net;Initial Catalog=CustomerManagement;User ID=M1043027;Password=Azuredb1@;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
+               options.UseSqlServer(Configuration.GetConnectionString("DatabaseConnectionString"),
                b => b.MigrationsAssembly("MT.OnlineRestaurant.DataLayer")));
             services.AddMvc()
                     .AddMvcOptions(options =>
