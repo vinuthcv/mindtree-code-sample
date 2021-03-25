@@ -60,7 +60,7 @@ namespace MT.OnlineRestaurant.SearchManagement
 
             services.AddDbContext<RestaurantManagementContext>(options =>
                options.UseSqlServer(Configuration.GetConnectionString("DatabaseConnectionString"),
-               b => b.MigrationsAssembly("MT.OnlineRestaurant.DataLayer")));
+            b => b.MigrationsAssembly("MT.OnlineRestaurant.DataLayer").EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null)));
 
             services.AddMvc()
                     .AddMvcOptions(options =>
